@@ -29,7 +29,7 @@
       --danger: #ff5555;
       --radius: 14px;
       --radius-sm: 10px;
-      --max-w: 1100px;
+      --max-w: 1440px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -62,6 +62,61 @@
     }
 
     main, header, footer { position: relative; z-index: 1; }
+
+    /* ============ REVEAL ANIMATIONS (premium 3D + blur) ============ */
+    @media (prefers-reduced-motion: no-preference) {
+      [data-reveal] {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(90px);
+        transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 1.2s cubic-bezier(0.16, 1.05, 0.3, 1),
+                    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform, filter;
+      }
+      /* Texto que entra desde fuera con ligera inclinación + skew */
+      [data-reveal="left"]  {
+        transform: translate3d(-200px, 0, 0) skewX(-4deg);
+        filter: blur(8px);
+      }
+      [data-reveal="right"] {
+        transform: translate3d(200px, 0, 0) skewX(4deg);
+        filter: blur(8px);
+      }
+      /* Móviles: perspectiva 3D, entran tiltados como dándose la vuelta */
+      [data-reveal="scale"] {
+        transform: perspective(1400px) rotateY(-28deg) rotateX(10deg) scale(0.75);
+        transform-origin: center center;
+        filter: blur(6px);
+      }
+      /* Tarjetas grandes con perspectiva: rotateY desde el lado para feel de "abrir" */
+      [data-reveal="card"] {
+        transform: perspective(1100px) rotateY(35deg) rotateX(-15deg) translateY(50px);
+        transform-origin: left center;
+        filter: blur(7px);
+      }
+      /* Chips: burst con rotación y curva spring que rebota */
+      [data-reveal="chip"] {
+        transform: scale(0.3) rotate(-20deg);
+        filter: blur(0);
+        transition: opacity 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      /* Spring overshoot fuerte para CTA y similares */
+      [data-reveal="spring"] {
+        transform: translateY(60px) scale(0.85);
+        filter: blur(8px);
+        transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    filter 0.6s ease-out;
+      }
+      .in-view [data-reveal] {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0) perspective(1400px) rotateY(0) rotateX(0) rotate(0) skewX(0) scale(1);
+        transition-delay: calc(var(--stagger, 0) * 130ms + var(--delay, 0) * 1ms);
+      }
+    }
 
     /* ============ NAV ============ */
     header.nav {
@@ -406,13 +461,13 @@
     <!-- HERO -->
     <section class="hero" id="hero">
       <div>
-        <span class="eyebrow">Retos · Grupos · Hábitos</span>
-        <h1>Reta a tus amigos.<br><span class="accent">Sin excusas.</span></h1>
-        <p class="lede">
+        <span class="eyebrow" data-reveal>Retos · Grupos · Hábitos</span>
+        <h1 data-reveal style="--delay: 120">Reta a tus amigos.<br><span class="accent">Sin excusas.</span></h1>
+        <p class="lede" data-reveal style="--delay: 260">
           La app de retos en grupo que convierte tus hábitos diarios en una competición sana con tu gente.
           Mantén la racha. Sube en el ranking. Lo que decida tu grupo.
         </p>
-        <div class="downloads">
+        <div class="downloads" data-reveal style="--delay: 400">
           <a class="dl-btn" href="mailto:support@retami.app?subject=Av%C3%ADsame%20cuando%20lance%20Retami%20(iOS)&body=Quiero%20saber%20cuando%20est%C3%A9%20disponible%20en%20App%20Store.%20%C2%A1Gracias!" aria-label="Avísame cuando lance Retami en App Store">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.86-3.08.4-1.09-.47-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
             <div class="dl-text">
@@ -428,10 +483,10 @@
             </div>
           </a>
         </div>
-        <p class="dl-soon">🚀 En camino — lanzamos pronto en iOS y Android.</p>
+        <p class="dl-soon" data-reveal style="--delay: 540">🚀 En camino — lanzamos pronto en iOS y Android.</p>
       </div>
 
-      <div class="hero-phone" aria-hidden="true">
+      <div class="hero-phone" data-reveal="scale" style="--delay: 200" aria-hidden="true">
         <div class="phone-screen">
           <img src="logo.png" alt="Retami" class="phone-logo">
           <div class="phone-tag">RETAMI</div>
@@ -441,9 +496,9 @@
 
     <!-- CÓMO FUNCIONA -->
     <section class="block" id="como">
-      <div class="section-eyebrow">CÓMO FUNCIONA</div>
-      <h2>Cuatro pasos. Sin curva de aprendizaje.</h2>
-      <p class="section-lede">
+      <div class="section-eyebrow" data-reveal="left">CÓMO FUNCIONA</div>
+      <h2 data-reveal="left" style="--delay: 120">Cuatro pasos. Sin curva de aprendizaje.</h2>
+      <p class="section-lede" data-reveal="left" style="--delay: 240">
         Si has usado un chat de grupo, sabes usar Retami. Solo que aquí cada actividad
         suma puntos, los demás te ven, y compites por la cima del ranking.
       </p>
@@ -473,9 +528,9 @@
 
     <!-- POR QUÉ FUNCIONA -->
     <section class="block" id="porque">
-      <div class="section-eyebrow">POR QUÉ FUNCIONA</div>
-      <h2>Tu motivación no es una notificación. Es tu gente.</h2>
-      <p class="section-lede">
+      <div class="section-eyebrow" data-reveal>POR QUÉ FUNCIONA</div>
+      <h2 data-reveal style="--delay: 120">Tu motivación no es una notificación. Es tu gente.</h2>
+      <p class="section-lede" data-reveal style="--delay: 240">
         Las apps de fitness te recuerdan ejercicios. Retami te recuerda que tu grupo
         está mirando. Saltarte un día es decir "no voy" en voz alta a tus amigos.
       </p>
@@ -525,9 +580,9 @@
 
     <!-- MÁS QUE DEPORTE -->
     <section class="block">
-      <div class="section-eyebrow">MÁS QUE DEPORTE</div>
-      <h2>Para cualquier hábito sano. Tu grupo decide qué cuenta.</h2>
-      <p class="section-lede">
+      <div class="section-eyebrow" data-reveal>MÁS QUE DEPORTE</div>
+      <h2 data-reveal style="--delay: 120">Para cualquier hábito sano. Tu grupo decide qué cuenta.</h2>
+      <p class="section-lede" data-reveal style="--delay: 240">
         Pensada sobre todo para retos deportivos, pero la lógica vale para cualquier
         hábito que quieras instalar (o quitar) con apoyo del grupo.
       </p>
@@ -549,16 +604,16 @@
 
     <!-- WALKTHROUGH — phone mockups con UI real -->
     <section class="block">
-      <div class="section-eyebrow">ASÍ ES POR DENTRO</div>
-      <h2>La app, sin filtros.</h2>
-      <p class="section-lede">
+      <div class="section-eyebrow" data-reveal>ASÍ ES POR DENTRO</div>
+      <h2 data-reveal style="--delay: 120">La app, sin filtros.</h2>
+      <p class="section-lede" data-reveal style="--delay: 240">
         Scrollea y ve los tres flujos principales. Esto mismo verás tú en tu móvil
         cuando lancemos.
       </p>
 
       <!-- Fila 1: HOME -->
       <div class="walk-row">
-        <div class="walk-phone-wrap">
+        <div class="walk-phone-wrap" data-reveal="scale">
           <div class="walk-phone">
             <div class="walk-screen">
               <img src="screen-home.png" alt="Pantalla Inicio de Retami" class="walk-screen-img"
@@ -571,7 +626,7 @@
             </div>
           </div>
         </div>
-        <div class="walk-text">
+        <div class="walk-text" data-reveal="right" style="--delay: 180">
           <span class="walk-text-eyebrow">PESTAÑA INICIO</span>
           <h3>Tus retos a un vistazo</h3>
           <p>
@@ -584,7 +639,7 @@
 
       <!-- Fila 2: CHAT -->
       <div class="walk-row reverse">
-        <div class="walk-phone-wrap">
+        <div class="walk-phone-wrap" data-reveal="scale">
           <div class="walk-phone">
             <div class="walk-screen">
               <img src="screen-chat.png" alt="Chat de grupo en Retami" class="walk-screen-img"
@@ -597,7 +652,7 @@
             </div>
           </div>
         </div>
-        <div class="walk-text">
+        <div class="walk-text" data-reveal="left" style="--delay: 180">
           <span class="walk-text-eyebrow">CHAT DE GRUPO</span>
           <h3>Conversación viva, no solo registros</h3>
           <p>
@@ -610,7 +665,7 @@
 
       <!-- Fila 3: RANKING -->
       <div class="walk-row">
-        <div class="walk-phone-wrap">
+        <div class="walk-phone-wrap" data-reveal="scale">
           <div class="walk-phone">
             <div class="walk-screen">
               <img src="screen-ranking.png" alt="Ranking del grupo en Retami" class="walk-screen-img"
@@ -623,7 +678,7 @@
             </div>
           </div>
         </div>
-        <div class="walk-text">
+        <div class="walk-text" data-reveal="right" style="--delay: 180">
           <span class="walk-text-eyebrow">RANKING EN VIVO</span>
           <h3>Quién manda, quién pega el sprint</h3>
           <p>
@@ -638,13 +693,13 @@
 
     <!-- CTA FINAL -->
     <section class="cta" id="descargar">
-      <span class="eyebrow">🚀 Lanzamiento próximo</span>
-      <h2>Tu primer reto te espera.</h2>
-      <p class="section-lede">
+      <span class="eyebrow" data-reveal>🚀 Lanzamiento próximo</span>
+      <h2 data-reveal style="--delay: 120">Tu primer reto te espera.</h2>
+      <p class="section-lede" data-reveal style="--delay: 240">
         Descarga cuando lancemos. Crea tu grupo, invita a tu gente, y empezad un reto
         de 30 días. Compite. Suma. Mantén la racha.
       </p>
-      <div class="downloads">
+      <div class="downloads" data-reveal style="--delay: 380">
         <a class="dl-btn" href="#" aria-label="Próximamente en App Store">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.86-3.08.4-1.09-.47-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
           <div class="dl-text">
@@ -683,21 +738,62 @@
   </footer>
 
   <script>
-    // Animación sutil de aparición al hacer scroll
+    // Al recargar la página, queremos arrancar SIEMPRE arriba del todo.
+    // Por defecto el navegador respeta el hash de la URL (#como, #descargar, etc.)
+    // y restaura la posición de scroll anterior, lo cual rompe la primera impresión.
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
+
+    // Sistema de reveal-on-scroll: cada sección observada se marca .in-view
+    // y los hijos con [data-reveal] cascadean su entrada según --stagger.
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
+          e.target.classList.add('in-view');
+          observer.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
 
-    document.querySelectorAll('.step, .feature, .walk-row, .habit, .cta').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-      observer.observe(el);
+    document.querySelectorAll('.hero, .block, .walk-row, .cta, footer').forEach(sec => {
+      observer.observe(sec);
+    });
+
+    // STEPS (Cómo funciona 01-04): slide dramático desde la izquierda en orden.
+    document.querySelectorAll('.steps').forEach(grid => {
+      [...grid.children].forEach((el, i) => {
+        el.setAttribute('data-reveal', 'left');
+        el.style.setProperty('--stagger', i * 1.4); // cascada más espaciada
+      });
+    });
+    // FEATURES (Por qué funciona): flip 3D con rotateY desde el lado.
+    document.querySelectorAll('.features').forEach(grid => {
+      [...grid.children].forEach((el, i) => {
+        el.setAttribute('data-reveal', 'card');
+        el.style.setProperty('--stagger', i);
+      });
+    });
+    // CHIPS (Más que deporte): burst con rotación + curva spring.
+    document.querySelectorAll('.habits-row').forEach(grid => {
+      [...grid.children].forEach((el, i) => {
+        el.setAttribute('data-reveal', 'chip');
+        el.style.setProperty('--stagger', i * 0.35);
+      });
+    });
+    // CTA botones: spring entry con overshoot
+    document.querySelectorAll('.cta .downloads .dl-btn').forEach((el, i) => {
+      el.setAttribute('data-reveal', 'spring');
+      el.style.setProperty('--stagger', i);
+    });
+
+    // Hero: una sola sección, pero se cargará in-view inmediatamente al abrir.
+    // Forzamos in-view al primer render para que se vea la cascada del hero.
+    requestAnimationFrame(() => {
+      const hero = document.querySelector('.hero');
+      if (hero) hero.classList.add('in-view');
     });
   </script>
 </body>

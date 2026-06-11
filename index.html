@@ -118,6 +118,62 @@
       }
     }
 
+    /* ============ SCROLL PROGRESS BAR ============ */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--accent), #fff700);
+      box-shadow: 0 0 12px var(--accent), 0 0 4px var(--accent);
+      z-index: 100;
+      transition: width 0.08s linear;
+    }
+
+    /* ============ SECTION DOTS (right side, desktop) ============ */
+    .section-dots {
+      position: fixed; right: 28px; top: 50%;
+      transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 16px;
+      z-index: 40;
+    }
+    .section-dot {
+      position: relative;
+      width: 10px; height: 10px; border-radius: 50%;
+      border: 2px solid var(--text-muted);
+      background: transparent;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .section-dot:hover { border-color: var(--accent); transform: scale(1.3); }
+    .section-dot.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 14px var(--accent), 0 0 4px var(--accent);
+      transform: scale(1.15);
+    }
+    .section-dot::before {
+      content: attr(data-name);
+      position: absolute;
+      right: 22px; top: 50%; transform: translateY(-50%);
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 5px 10px; border-radius: 6px;
+      font-size: 11px; font-weight: 700; color: var(--text-secondary);
+      white-space: nowrap; letter-spacing: 0.3px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .section-dot:hover::before { opacity: 1; transform: translateY(-50%) translateX(-4px); }
+    @media (max-width: 900px) { .section-dots { display: none; } }
+
+    /* ============ SECTION DIVIDER (subtle yellow gradient line at top of each section) ============ */
+    .block { position: relative; }
+    .block::before {
+      content: "";
+      position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: min(600px, 80%); height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-mid), transparent);
+      pointer-events: none;
+    }
+
     /* ============ NAV ============ */
     header.nav {
       position: sticky; top: 0;
@@ -437,9 +493,96 @@
       font-size: 12px; color: var(--text-dim);
     }
     .footer-credit .heart { color: var(--danger); }
+
+    /* ============ MOBILE COMPREHENSIVE STYLES ============ */
+    @media (max-width: 600px) {
+      /* Nav más compacta */
+      .nav-inner { padding: 12px 18px; }
+      .logo-mark { width: 32px; height: 32px; }
+      .logo { font-size: 16px; gap: 8px; }
+      .nav-cta {
+        padding: 8px 14px !important;
+        font-size: 13px !important;
+      }
+
+      /* Hero más ajustado */
+      .hero { padding: 36px 20px 56px; gap: 36px; }
+      h1 { letter-spacing: -1px; line-height: 1.08; }
+      .eyebrow { font-size: 11px; padding: 5px 11px; }
+      .lede { font-size: 15px; margin-bottom: 28px; }
+      .hero-phone { max-width: 200px; }
+      .dl-btn { min-width: 0; flex: 1; padding: 14px 16px; min-height: 56px; }
+      .dl-btn .dl-text small { font-size: 9px; }
+      .dl-btn .dl-text strong { font-size: 14px; }
+      .downloads { gap: 10px; flex-wrap: nowrap; }
+
+      /* Sections padding y tipografía */
+      section.block { padding: 50px 18px; }
+      h2 { font-size: 26px; letter-spacing: -0.5px; }
+      .section-lede { font-size: 15px; margin-bottom: 36px; }
+
+      /* Steps: cards más compactas, una columna */
+      .steps { grid-template-columns: 1fr; gap: 14px; }
+      .step { padding: 24px 22px; min-height: 0; }
+      .step-num { font-size: 28px; margin-bottom: 12px; }
+      .step-title { font-size: 17px; }
+      .step-desc { font-size: 14px; }
+
+      /* Features: una columna en móvil */
+      .features { grid-template-columns: 1fr; gap: 14px; }
+      .feature { padding: 22px 20px; }
+      .feature-title { font-size: 16px; }
+      .feature-desc { font-size: 14px; }
+
+      /* Habit chips: más pequeños */
+      .habit { font-size: 13px; padding: 8px 14px; }
+      .habits-row { gap: 8px; }
+
+      /* Walkthrough: phone más pequeño + texto más legible */
+      .walk-row, .walk-row.reverse { gap: 24px; margin-bottom: 56px; }
+      .walk-phone { width: 240px; }
+      .walk-text-eyebrow { font-size: 10px; padding: 3px 9px; margin-bottom: 12px; }
+      .walk-text h3 { font-size: 22px; margin-bottom: 12px; }
+      .walk-text p { font-size: 15px; line-height: 1.55; }
+
+      /* CTA más compacto en móvil */
+      .cta { padding: 40px 24px; margin: 40px 18px; }
+      .cta .downloads { flex-direction: column; }
+      .cta .downloads .dl-btn { width: 100%; flex: 0 0 auto; }
+
+      /* Footer en columna */
+      .footer-inner { flex-direction: column; gap: 18px; text-align: center; padding: 32px 20px; }
+      .footer-links { justify-content: center; gap: 18px; }
+
+      /* Section divider más estrecho */
+      .block::before { width: min(280px, 70%); }
+
+      /* Progress bar más finita en móvil */
+      .scroll-progress { height: 2px; }
+    }
+
+    /* Tablet intermedio */
+    @media (min-width: 601px) and (max-width: 800px) {
+      .features { grid-template-columns: 1fr; }
+      .hero-phone { max-width: 220px; }
+      .walk-phone { width: 260px; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Progress bar de scroll arriba -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Dots indicadores de sección (lado derecho, solo desktop) -->
+  <nav class="section-dots" aria-label="Navegación por secciones">
+    <a href="#hero" class="section-dot" data-name="Inicio" aria-label="Inicio"></a>
+    <a href="#como" class="section-dot" data-name="Cómo funciona" aria-label="Cómo funciona"></a>
+    <a href="#porque" class="section-dot" data-name="Por qué" aria-label="Por qué"></a>
+    <a href="#deporte" class="section-dot" data-name="Más que deporte" aria-label="Más que deporte"></a>
+    <a href="#dentro" class="section-dot" data-name="Por dentro" aria-label="Por dentro"></a>
+    <a href="#descargar" class="section-dot" data-name="Descargar" aria-label="Descargar"></a>
+  </nav>
 
   <!-- NAV -->
   <header class="nav">
@@ -579,7 +722,7 @@
     </section>
 
     <!-- MÁS QUE DEPORTE -->
-    <section class="block">
+    <section class="block" id="deporte">
       <div class="section-eyebrow" data-reveal>MÁS QUE DEPORTE</div>
       <h2 data-reveal style="--delay: 120">Para cualquier hábito sano. Tu grupo decide qué cuenta.</h2>
       <p class="section-lede" data-reveal style="--delay: 240">
@@ -603,7 +746,7 @@
     </section>
 
     <!-- WALKTHROUGH — phone mockups con UI real -->
-    <section class="block">
+    <section class="block" id="dentro">
       <div class="section-eyebrow" data-reveal>ASÍ ES POR DENTRO</div>
       <h2 data-reveal style="--delay: 120">La app, sin filtros.</h2>
       <p class="section-lede" data-reveal style="--delay: 240">
@@ -795,6 +938,32 @@
       const hero = document.querySelector('.hero');
       if (hero) hero.classList.add('in-view');
     });
+
+    // Progress bar de scroll arriba — se rellena a medida que bajas.
+    const progressBar = document.querySelector('.scroll-progress');
+    function updateProgress() {
+      const scrolled = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (scrolled / max) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // Dots indicadores: marcar como activo el dot de la sección que tienes en pantalla.
+    const dots = document.querySelectorAll('.section-dot');
+    const sectionsForDots = ['#hero', '#como', '#porque', '#deporte', '#dentro', '#descargar']
+      .map(sel => document.querySelector(sel))
+      .filter(Boolean);
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = sectionsForDots.indexOf(e.target);
+          dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+      });
+    }, { threshold: 0.4, rootMargin: '-20% 0px -40% 0px' });
+    sectionsForDots.forEach(s => activeObserver.observe(s));
   </script>
 </body>
 </html>

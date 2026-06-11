@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://retami.app/sitemap.xml

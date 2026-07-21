@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos de Servicio — Retami</title>
+  <meta name="description" content="Términos y condiciones de uso de Retami: normas de comportamiento, contenido prohibido, obligaciones del usuario y política de tolerancia cero.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="https://retami.app/logo.png">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #111;
+      --border: #252525;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b5b5b5;
+      --text-muted: #777;
+      --accent: #e8ff00;
+      --accent-low: rgba(232, 255, 0, 0.1);
+      --accent-mid: rgba(232, 255, 0, 0.2);
+      --danger: #ff5555;
+      --danger-low: rgba(255, 85, 85, 0.08);
+      --danger-mid: rgba(255, 85, 85, 0.25);
+      --max-w: 1100px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.15s; }
+    a:hover { opacity: 0.7; }
+
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(232,255,0,0.05), transparent 50%),
+        linear-gradient(rgba(232,255,0,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,255,0,0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 60px 60px, 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(10,10,10,0.7);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 18px; font-weight: 900; letter-spacing: -0.5px;
+      color: var(--text-primary);
+    }
+    .logo:hover { opacity: 1; }
+    .logo-mark { width: 36px; height: 36px; border-radius: 9px; object-fit: cover; flex-shrink: 0; }
+    .nav-back {
+      padding: 8px 14px; font-size: 14px; color: var(--text-secondary);
+      border-radius: 8px;
+    }
+    .nav-back:hover { color: var(--text-primary); opacity: 1; background: var(--bg-card); }
+
+    article {
+      position: relative; z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 70px 24px 80px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; color: var(--accent);
+      letter-spacing: 2px; padding: 6px 12px;
+      background: var(--accent-low); border: 1px solid var(--accent-mid);
+      border-radius: 99px; margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 8px var(--accent);
+    }
+    h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 900; line-height: 1.08; letter-spacing: -1.2px; margin-bottom: 14px; }
+    .meta { color: var(--text-muted); font-size: 13px; letter-spacing: 0.5px; margin-bottom: 40px; text-transform: uppercase; font-weight: 700; }
+    .intro { font-size: 17px; color: var(--text-secondary); margin-bottom: 50px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .intro strong { color: var(--text-primary); }
+    h2 {
+      font-size: clamp(22px, 3vw, 26px); font-weight: 800; letter-spacing: -0.4px;
+      margin-top: 48px; margin-bottom: 14px; color: var(--text-primary);
+      display: flex; align-items: baseline; gap: 10px;
+    }
+    h2::before { content: "§"; color: var(--accent); font-size: 0.75em; font-weight: 900; }
+    h3 { font-size: 16px; font-weight: 700; margin-top: 24px; margin-bottom: 8px; color: var(--text-primary); }
+    p, ul, ol { margin-bottom: 16px; color: var(--text-secondary); font-size: 15.5px; }
+    ul, ol { padding-left: 22px; }
+    li { margin-bottom: 8px; }
+    li::marker { color: var(--accent); }
+    strong { color: var(--text-primary); font-weight: 700; }
+
+    .callout {
+      background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+      padding: 18px 22px; border-radius: 10px; margin: 28px 0;
+    }
+    .callout p { margin-bottom: 0; color: var(--text-primary); }
+    .callout.danger { border-left-color: var(--danger); background: var(--danger-low); border-color: var(--danger-mid); }
+    .callout.danger strong { color: var(--danger); }
+
+    footer {
+      position: relative; z-index: 1;
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 30px 24px 60px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted); font-size: 13px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    footer a { color: var(--text-secondary); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 12px 18px; }
+      article { padding: 40px 20px 60px; }
+      h2 { margin-top: 36px; }
+      footer { padding: 24px 20px 50px; flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-back" href="https://retami.app">← Volver</a>
+      <a class="logo" href="https://retami.app">
+        <img src="https://retami.app/logo.png" alt="Retami" class="logo-mark">
+        <span>Retami</span>
+      </a>
+    </div>
+  </header>
+
+  <article>
+    <span class="eyebrow">TÉRMINOS DE SERVICIO</span>
+    <h1>Términos y condiciones de uso de Retami</h1>
+    <p class="meta">Última actualización · 21 de julio de 2026</p>
+
+    <p class="intro">
+      Este documento constituye el Contrato de Licencia de Usuario Final (EULA) entre
+      <strong>Alejandro Rubio</strong> ("Titular") y el usuario ("Usuario") de la aplicación
+      <strong>Retami</strong>. Al crear una cuenta, aceptas expresamente estos Términos.
+      Si no estás de acuerdo con alguna parte, no utilices la Aplicación.
+    </p>
+
+    <h2>Aceptación de los Términos</h2>
+    <p>
+      El uso de Retami requiere la aceptación de estos Términos y de la
+      <a href="https://privacy.retami.app">Política de Privacidad</a>. La aceptación se
+      manifiesta marcando la casilla correspondiente durante el proceso de registro y
+      creando la cuenta.
+    </p>
+
+    <h2>Requisitos para usar la Aplicación</h2>
+    <ul>
+      <li>Ser mayor de <strong>16 años</strong>. Verificamos la fecha de nacimiento durante el registro.</li>
+      <li>Proporcionar información veraz al registrarse.</li>
+      <li>Mantener la confidencialidad de tu contraseña.</li>
+      <li>Usar la Aplicación exclusivamente para fines legales y personales.</li>
+    </ul>
+
+    <h2>Política de tolerancia cero con el contenido inaceptable</h2>
+    <div class="callout danger">
+      <p>
+        <strong>Retami mantiene tolerancia cero</strong> con el contenido ofensivo,
+        abusivo o inapropiado, y con los usuarios que se comporten de forma abusiva.
+        El incumplimiento supone la <strong>eliminación inmediata del contenido y la suspensión
+        o eliminación definitiva de la cuenta</strong>, sin previo aviso ni derecho a reembolso.
+      </p>
+    </div>
+
+    <h3>Contenido prohibido</h3>
+    <p>Queda estrictamente prohibido publicar, enviar o compartir dentro de Retami cualquier contenido que:</p>
+    <ul>
+      <li>Sea difamatorio, calumnioso, injurioso, amenazante, acosador o intimidatorio.</li>
+      <li>Contenga discurso de odio, incitación a la violencia o discriminación por razón de raza, etnia, religión, sexo, orientación sexual, identidad de género, discapacidad o cualquier otra condición.</li>
+      <li>Represente pornografía, desnudez, violencia gráfica o material sexualmente explícito.</li>
+      <li>Promocione autolesiones, suicidio, trastornos alimenticios o cualquier práctica dañina para la salud.</li>
+      <li>Promocione el consumo de drogas ilícitas u otras sustancias ilegales.</li>
+      <li>Infrinja derechos de propiedad intelectual, derechos de autor o marcas registradas.</li>
+      <li>Sea spam, publicidad no solicitada, esquemas piramidales o estafas.</li>
+      <li>Contenga malware, virus o cualquier código diseñado para dañar sistemas.</li>
+      <li>Suplante la identidad de otras personas u organizaciones.</li>
+      <li>Viole la privacidad de terceros (compartir datos personales sin consentimiento).</li>
+      <li>Sea ilegal según las leyes españolas o de la Unión Europea aplicables.</li>
+    </ul>
+
+    <h3>Comportamiento prohibido</h3>
+    <p>Queda igualmente prohibido:</p>
+    <ul>
+      <li>Acosar, hostigar o intimidar a otros usuarios de la Aplicación.</li>
+      <li>Manipular puntuaciones, retos o el ranking mediante engaños.</li>
+      <li>Crear cuentas múltiples con el fin de eludir sanciones.</li>
+      <li>Intentar acceder a áreas restringidas, datos ajenos o sistemas del Titular.</li>
+      <li>Realizar ingeniería inversa, descompilar o intentar extraer el código fuente.</li>
+      <li>Utilizar la Aplicación con fines comerciales sin autorización previa.</li>
+    </ul>
+
+    <h2>Mecanismos de moderación</h2>
+    <p>
+      Para garantizar el cumplimiento de estos Términos, Retami pone a disposición del Usuario
+      las siguientes herramientas de moderación, accesibles desde la Aplicación:
+    </p>
+    <ul>
+      <li>
+        <strong>Reportar contenido inapropiado.</strong> Cualquier usuario puede reportar
+        mensajes de chat, actividades registradas o perfiles de otros usuarios manteniendo
+        pulsado el elemento y seleccionando "Reportar". El reporte llega al Titular
+        para su revisión.
+      </li>
+      <li>
+        <strong>Bloquear usuarios abusivos.</strong> Desde el perfil de cualquier usuario
+        se puede seleccionar "Bloquear", con lo que se dejan de recibir mensajes,
+        notificaciones y solicitudes de esa persona.
+      </li>
+      <li>
+        <strong>Vetar actividades en grupos.</strong> Los administradores de un grupo pueden
+        vetar actividades registradas por sus miembros si consideran que incumplen las
+        reglas del grupo o estos Términos.
+      </li>
+      <li>
+        <strong>Expulsar miembros de un grupo.</strong> Los administradores pueden expulsar
+        a miembros que incumplan las normas del grupo o estos Términos.
+      </li>
+    </ul>
+
+    <p>
+      El Titular <strong>revisa cada reporte recibido en un plazo máximo de 24 horas</strong>
+      y toma las medidas oportunas: eliminación del contenido, advertencia al usuario,
+      suspensión temporal o eliminación definitiva de la cuenta según la gravedad.
+    </p>
+
+    <h2>Contenido generado por el Usuario</h2>
+    <p>
+      El Usuario es <strong>el único responsable</strong> del contenido que publica en Retami
+      (mensajes, fotografías, actividades registradas, reglas de grupos, etc.). El Titular
+      no revisa a priori dicho contenido, pero se reserva el derecho a eliminarlo o
+      moderarlo cuando incumpla estos Términos.
+    </p>
+    <p>
+      Al publicar contenido en Retami, el Usuario:
+    </p>
+    <ul>
+      <li>Declara ser titular de los derechos o tener autorización para publicarlo.</li>
+      <li>Concede al Titular una licencia limitada, no exclusiva y libre de regalías para procesar, almacenar y mostrar dicho contenido dentro de la Aplicación con la finalidad de prestar el servicio.</li>
+      <li>Acepta que otros usuarios del mismo grupo puedan ver ese contenido.</li>
+      <li>Reconoce que las fotografías de actividades caducan automáticamente a las 36 horas.</li>
+    </ul>
+
+    <h2>Cuentas y suspensión</h2>
+    <p>
+      El Titular se reserva el derecho de:
+    </p>
+    <ul>
+      <li>Suspender temporalmente una cuenta durante la investigación de un reporte.</li>
+      <li>Eliminar definitivamente una cuenta que incumpla estos Términos, sin previo aviso.</li>
+      <li>Rechazar la creación de nuevas cuentas por parte de usuarios previamente sancionados.</li>
+    </ul>
+
+    <p>
+      El Usuario puede en cualquier momento borrar su propia cuenta desde
+      <strong>Perfil → Editar perfil → Borrar mi cuenta</strong>. La eliminación es
+      inmediata e irreversible.
+    </p>
+
+    <h2>Limitación de responsabilidad</h2>
+    <p>
+      Retami se ofrece "tal cual" y "según disponibilidad", sin garantías expresas o
+      implícitas sobre su funcionamiento continuo, la exactitud de los datos, o la
+      idoneidad para un propósito particular.
+    </p>
+    <p>
+      El Titular no será responsable de daños indirectos, incidentales o consecuentes
+      derivados del uso o imposibilidad de uso de la Aplicación. Los retos, puntuaciones
+      y consejos entre usuarios <strong>no constituyen recomendación médica ni deportiva
+      profesional</strong>; el Usuario asume la responsabilidad de su propia actividad física.
+    </p>
+
+    <h2>Propiedad intelectual</h2>
+    <p>
+      El nombre "Retami", el logotipo, el diseño de la Aplicación, la interfaz gráfica
+      y el código fuente son propiedad exclusiva del Titular. Queda prohibido su uso sin
+      autorización expresa por escrito.
+    </p>
+
+    <h2>Cambios en estos Términos</h2>
+    <p>
+      El Titular podrá modificar estos Términos en cualquier momento. Los cambios se
+      notificarán al Usuario mediante email o dentro de la Aplicación antes de su entrada
+      en vigor. El uso continuado de Retami tras la modificación supone la aceptación
+      de los nuevos Términos.
+    </p>
+
+    <h2>Legislación aplicable y jurisdicción</h2>
+    <p>
+      Estos Términos se rigen por la legislación española. Cualquier controversia se
+      someterá a los tribunales de la ciudad de residencia del Titular, salvo cuando
+      el Usuario tenga la condición de consumidor, en cuyo caso será competente el tribunal
+      del domicilio del Usuario.
+    </p>
+
+    <h2>Contacto</h2>
+    <p>
+      Para cualquier consulta relacionada con estos Términos, para reportar contenido
+      inaceptable o para ejercer tus derechos, puedes contactar en:
+    </p>
+    <ul>
+      <li><strong>Soporte:</strong> <a href="mailto:support@retami.app">support@retami.app</a></li>
+      <li><strong>Privacidad:</strong> <a href="mailto:privacy@retami.app">privacy@retami.app</a></li>
+    </ul>
+
+  </article>
+
+  <footer>
+    <div>© 2026 Retami · Alejandro Rubio</div>
+    <div>
+      <a href="https://privacy.retami.app">Política de privacidad</a> ·
+      <a href="mailto:support@retami.app">Contacto</a>
+    </div>
+  </footer>
+
+</body>
+</html>

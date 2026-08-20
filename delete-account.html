@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Borrar cuenta — Retami</title>
+  <meta name="description" content="Cómo eliminar tu cuenta de Retami y todos tus datos asociados.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="https://retami.app/logo.png">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #111;
+      --border: #252525;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b5b5b5;
+      --text-muted: #777;
+      --accent: #e8ff00;
+      --accent-low: rgba(232, 255, 0, 0.1);
+      --accent-mid: rgba(232, 255, 0, 0.2);
+      --danger: #ff5555;
+      --max-w: 760px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg); color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { opacity: 0.7; }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(232,255,0,0.05), transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(10,10,10,0.7);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 900; color: var(--text-primary); }
+    .logo-mark { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
+    .nav-back { color: var(--text-secondary); font-size: 14px; padding: 8px 14px; border-radius: 8px; }
+    .nav-back:hover { color: var(--text-primary); background: var(--bg-card); opacity: 1; }
+
+    article {
+      position: relative; z-index: 1;
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+    .eyebrow {
+      display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent);
+      letter-spacing: 2px; padding: 5px 12px;
+      background: var(--accent-low); border: 1px solid var(--accent-mid);
+      border-radius: 99px; margin-bottom: 22px;
+    }
+    h1 {
+      font-size: clamp(30px, 5vw, 40px);
+      font-weight: 900; letter-spacing: -1px; line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .meta { color: var(--text-muted); font-size: 13px; letter-spacing: 0.5px; margin-bottom: 40px; text-transform: uppercase; font-weight: 700; }
+    p { color: var(--text-secondary); font-size: 16px; margin-bottom: 16px; line-height: 1.65; }
+    strong { color: var(--text-primary); font-weight: 700; }
+    h2 {
+      font-size: 22px; font-weight: 800; margin-top: 44px; margin-bottom: 14px;
+      color: var(--text-primary);
+    }
+    ol, ul { margin-bottom: 16px; padding-left: 24px; color: var(--text-secondary); font-size: 16px; }
+    li { margin-bottom: 10px; }
+    li::marker { color: var(--accent); font-weight: 700; }
+    .callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--danger);
+      padding: 18px 22px;
+      border-radius: 10px;
+      margin: 28px 0;
+    }
+    .callout p { margin-bottom: 0; color: var(--text-primary); }
+    .steps-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 18px 22px;
+      border-radius: 10px;
+      margin: 20px 0 28px;
+    }
+    .steps-box p { margin: 0; font-family: ui-monospace, "SF Mono", Menlo, monospace; color: var(--accent); font-size: 15px; font-weight: 700; }
+    footer {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 30px 24px 50px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted); font-size: 13px; text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-back" href="https://retami.app">← Volver</a>
+      <a class="logo" href="https://retami.app">
+        <img src="https://retami.app/logo.png" alt="Retami" class="logo-mark">
+        <span>Retami</span>
+      </a>
+    </div>
+  </header>
+
+  <article>
+    <span class="eyebrow">BORRAR CUENTA</span>
+    <h1>Elimina tu cuenta y tus datos</h1>
+    <p class="meta">Última actualización · Julio 2026</p>
+
+    <p>
+      En Retami puedes solicitar el borrado completo de tu cuenta y todos los datos
+      asociados en <strong>cualquier momento</strong>, tanto desde dentro de la aplicación
+      como escribiéndonos por email.
+    </p>
+
+    <h2>Opción 1 — Desde la propia app (recomendada, inmediata)</h2>
+    <p>Si tienes la app instalada, este es el camino más rápido:</p>
+    <div class="steps-box">
+      <p>Perfil → Editar perfil → Borrar mi cuenta</p>
+    </div>
+    <p>
+      Se te pedirá confirmación. Una vez confirmada, tu cuenta y todos los datos
+      asociados se eliminan de forma <strong>inmediata e irreversible</strong>.
+    </p>
+
+    <h2>Opción 2 — Por email</h2>
+    <p>
+      Si no tienes acceso a la app (la desinstalaste, perdiste el móvil, etc.),
+      escríbenos a:
+    </p>
+    <div class="steps-box">
+      <p><a href="mailto:privacy@retami.app?subject=Solicitud%20de%20borrado%20de%20cuenta" style="color: #e8ff00; text-decoration: none;">privacy@retami.app</a></p>
+    </div>
+    <p>
+      Indica en el email la dirección de correo con la que registraste la cuenta.
+      Procesamos la solicitud en un plazo <strong>máximo de 72 horas</strong>.
+    </p>
+
+    <h2>Qué datos se eliminan</h2>
+    <p>Al confirmar el borrado, eliminamos <strong>todos</strong> tus datos:</p>
+    <ul>
+      <li>Cuenta de autenticación (email + contraseña cifrada)</li>
+      <li>Perfil público (nombre, username, foto, biografía, fecha de nacimiento)</li>
+      <li>Mensajes de chat de grupo y mensajes directos que hayas enviado</li>
+      <li>Actividades registradas y fotografías subidas</li>
+      <li>Reacciones y reportes</li>
+      <li>Token de notificaciones push</li>
+    </ul>
+
+    <h2>Qué NO se elimina y por qué</h2>
+    <p>Por motivos técnicos o legales, algunos elementos residuales se mantienen:</p>
+    <ul>
+      <li>
+        <strong>Grupos que hayas creado</strong>: siguen existiendo para el resto de miembros,
+        pero pasan a no tener creador asignado.
+      </li>
+      <li>
+        <strong>Logs de auditoría de moderación</strong>: si has ejercido acciones de admin
+        (vetos, expulsiones), esos registros se anonimizan pero se conservan como evidencia
+        legal.
+      </li>
+    </ul>
+
+    <div class="callout">
+      <p>
+        ⚠️ El borrado es <strong>inmediato e irreversible</strong>. No podemos recuperar tu
+        cuenta ni tus datos una vez confirmes la eliminación. Si tienes dudas, contáctanos
+        antes en <a href="mailto:privacy@retami.app" style="color: #e8ff00;">privacy@retami.app</a>.
+      </p>
+    </div>
+
+    <h2>Plazo de eliminación</h2>
+    <p>
+      Desde el momento en que se confirma la solicitud (dentro de la app o al recibir el
+      email), los datos personales se eliminan de nuestros sistemas en un plazo máximo de
+      <strong>72 horas</strong>. En la práctica el borrado desde la app es instantáneo.
+    </p>
+
+    <h2>Más información</h2>
+    <p>
+      Puedes consultar más detalles sobre cómo tratamos tus datos en nuestra
+      <a href="https://privacy.retami.app">Política de Privacidad</a>.
+    </p>
+
+  </article>
+
+  <footer>
+    © 2026 Retami · Alejandro Rubio · <a href="mailto:privacy@retami.app">privacy@retami.app</a>
+  </footer>
+
+</body>
+</html>

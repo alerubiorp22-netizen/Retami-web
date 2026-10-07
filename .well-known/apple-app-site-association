@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "QYVSFP58LH.com.retami.app",
+        "paths": [
+          "/join",
+          "/join/*"
+        ]
+      }
+    ]
+  }
+}
